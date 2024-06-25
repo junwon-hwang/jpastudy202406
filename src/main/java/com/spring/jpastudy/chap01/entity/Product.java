@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_product")
-@Getter @ToString
+@Getter @ToString(exclude = "nickName")
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +22,7 @@ public class Product {
     private long id; // PK
 
     @Column(name="prod_nm" , length=30 , nullable = false)
+    @Setter
     private String name; // 상품명
 
     @Column(name="price")
@@ -29,6 +30,7 @@ public class Product {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @Setter
     private Category category; // 상품 카테고리
 
     @CreationTimestamp // insert시에 자동으로 서버시간 저장
@@ -44,5 +46,16 @@ public class Product {
 
     public enum  Category {
         FOOD ,  FASHION , ELECTRONIC
+    }
+
+    // 컬럼 기본값 설정
+    @PrePersist
+    public void prePersist(){
+        if(this.price == 0){
+            this.price = 10000;
+        }
+        if(this.category == null){
+            this.category = Category.FOOD;
+        }
     }
 }
