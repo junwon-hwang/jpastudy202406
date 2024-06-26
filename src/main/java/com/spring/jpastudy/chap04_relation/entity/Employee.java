@@ -31,6 +31,12 @@ public class Employee {
     @JoinColumn(name= "dept_id") // FK 컬럼명
     private Department department;
 
+    public void changDepartment(Department department) {
+        this.department = department;
+        department.getEmployees().add(this);
+
+    }
+
 //    @ManyToOne
 //    @JoinColumn(name= "receive_dept_id")
 //    private Department department2;
