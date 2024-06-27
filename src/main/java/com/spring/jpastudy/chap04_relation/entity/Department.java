@@ -47,7 +47,7 @@ public class Department {
 
      */
     // {cascade = CascadeType.REMOVE , cascade = CascadeType.PERSIST}
-    @OneToMany(mappedBy = "department", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Employee> employees = new ArrayList<>();
 
 
