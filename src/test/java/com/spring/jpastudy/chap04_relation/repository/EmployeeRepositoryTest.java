@@ -23,7 +23,7 @@ class EmployeeRepositoryTest {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    // @BeforeEach
+//     @BeforeEach
     void beforeInsert() {
         Department d1 = Department.builder()
                 .name("영업부")
