@@ -21,17 +21,17 @@ public class EventService {
     private final EventRepository eventRepository;
 
     // 전체 조회 서비스
-    public List<EventDetailDto> getEvents(String sort){
+    public List<EventDetailDto> getEvents(String sort) {
         return eventRepository.findEvents(sort)
                 .stream().map(EventDetailDto::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+                ;
     }
 
     // 이벤트 등록
-    public List<EventDetailDto> saveEvent(EventSaveDto dto){
-        Event saveEvent = eventRepository.save(dto.toEntity());
-        log.info("saved event: {}" , saveEvent);
+    public List<EventDetailDto> saveEvent(EventSaveDto dto) {
+        Event savedEvent = eventRepository.save(dto.toEntity());
+        log.info("saved event: {}", savedEvent);
         return getEvents("date");
     }
-
 }
