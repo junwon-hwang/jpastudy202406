@@ -3,7 +3,6 @@ package com.spring.jpastudy.event.repository;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.spring.jpastudy.event.entity.Event;
-import com.spring.jpastudy.event.entity.QEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
